@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SCS login </title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+   <nav>
+    <div class header>
+        <h2> Smart Canteen System </h2>
+
+    </div>
+    <img src="Assets/canteen logo.jpg">
+
+   </nav>
+    <div class="login-container">
+        <h1> Login to SCS </h1>
+        <form action="" method="">
+            <div class="input-group">
+                <label for="username">username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="phone number">phone number</label>
+                <input type="number" id="phone number" name="phone number" required>
+            </div>
+            <a href="Home.html"><button class="btn btn-primary">Login</button></a>
+        </form>
+    </div>
+    <!-- <script>
+         // https://script.google.com/macros/s/AKfycbxghJ8XtgknUS4Cjxus0zPy2i_cKi642BSfUPFUIkis-tYb_QvGbCMMR822Kv5zLh0e/exec
+
+
+        const url = "https://script.google.com/macros/s/AKfycbx2nfHpmwofqz4gukIdM41Z5Krn-V54wN6Db75moXlIT0L82ArLmCc2uL_VU235nSkj/exec" // enter your public ('access' - 'anyone') deployment URL (NOT test deployment!)
+        document.getElementById('form').action = url;
+
+        // fetching the data from each column in the sheet
+        // then populating the respective datalist
+        fetch(`${url}?header=username`)
+            .then((response) => response.json())
+            .then(({ data }) => {
+                console.log(data);
+                populateDatalists("username", data)
+            })
+            .catch((error) => console.error('!!!!!!!!', error));
+
+        fetch(`${url}?header=email address`)
+            .then((response) => response.json())
+            .then(({ data }) => {
+                console.log(data);
+                populateDatalists("email address", data)
+            })
+            .catch((error) => console.error('!!!!!!!!', error));
+        
+        fetch(`${url}?header=password`)
+            .then((response) => response.json())
+            .then(({ data }) => {
+                console.log(data);
+                populateDatalists("password", data)
+            })
+            .catch((error) => console.error('!!!!!!!!', error));
+            fetch(`${url}?header=phone number`)
+            .then((response) => response.json())
+            .then(({ data }) => {
+                console.log(data);
+                populateDatalists("phone number", data)
+            })
+            .catch((error) => console.error('!!!!!!!!', error));
+
+    </script> -->
+</body>
+</html>
