@@ -1,0 +1,76 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;  /* This will make sure the image covers the full viewport */
+    background-position: center center;
+}
+
+
+.login-boxes{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+}
+#loginEmail{
+    margin-bottom:1rem;
+}
+#loginPassword{
+    margin-bottom:1rem;
+}
+.login-header{
+    color: #ddd;
+    text-align: center;
+}
+.parent-of-semi-transparent-box-big {
+    display: grid;
+    justify-content: center; 
+    height: 100vh;       
+}
+.semi-transperent-box{
+    background-color: rgba(54, 51, 51, 0.5); 
+    width:50%;
+    height:80%;
+    margin-right: 3rem;
+    padding:20px;
+}
+.semi-transperent-box-big{
+    background-color: rgba(54, 51, 51, 0.5); 
+    width:60vw;
+    height:60vh;
+    margin-right: 10rem;
+    display: flex;
+    justify-content: center; 
+    justify-content: flex-end;
+    padding:20px;
+}
+.login-button {
+    background-color: blue;  
+    color: white;                  
+    padding: 8px 16px;            
+    border: none;                 
+    border-radius: 5px;           
+    cursor: pointer;              
+    font-size: 1rem;               
+    transition: background-color 0.3s; 
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    width:80%;
+}
+
+.login-button:hover {
+    background-color: darkblue;  
+}
+.login-text{
+    font-size: var(--normal-font-size);
+    text-align: left;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    width: 50%;
+    color: #ddd;
+}
+
+.forgot-password-link {
+    padding-top: 20px;
+    display: inline-block;
+    color: #fff;
+}

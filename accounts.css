@@ -1,0 +1,122 @@
+/* Reset default margins and paddings */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base styles and colors */
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #f7fff7; /* Light green */
+    color: #333;
+}
+
+h1 {
+    color: #D9D9D9; /* Light gray for the header */
+    font-size: 2.5em;
+    transition: 0.3s ease;
+}
+
+h1:hover {
+    color: white; /* White color when hovered */
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #2e8b57; /* Green background for branding */
+}
+
+#canteen-logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+/* Sidebar Styles */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2e8b57; /* Green background for sidebar */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff; /* White text color for sidebar links */
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    background-color: #ffffff; /* White background when sidebar link is hovered */
+    color: #2e8b57; /* Green text color when sidebar link is hovered */
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    color: #ffffff; /* White color for close button */
+}
+
+/* Centered content */
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Footer styles */
+.footer {
+    background-color: #2e8b57; /* Green background for footer */
+    color: #ffffff; /* White text color for footer */
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: #ffffff; /* White text color for footer links */
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+
+}
+
+.cart-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Feedback</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <section id="header" style="background-color: #2e8b57;">
+        <span id="menuToggle" style="font-size:30px;cursor:pointer;padding: 20px;background-color: #2e8b57" onclick="toggleNav()">&#9776;</span>
+        <div class="branding">
+
+    <!-- Trigger to open the sidebar -->
+    
+
+            <div id="mySidenav" class="sidenav">
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="accounts.html">User Information</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="About.html">About</a>
+                <a href="Login.html">Sign Out</a>
+            </div>
+            <img id="canteen-logo" src="canteenlogo.png" alt="logo">
+            <h1>Smart Canteen System</h1>
+        </div>
+    </section>
+    <div class="cart-container">
+    <h2 style="padding-left: 20%;">User Feedback Page</h2>
+    <p style="padding-left: 20%;">Welcome, <span id="email"></span></p>
+    <p style="padding-left: 20%;">Rating:</p>
+    <div class="rating" style="padding-left: 30%;">
+        <input type="radio" id="star5" name="rating" value="1" /><label for="star5"></label>
+        <input type="radio" id="star4" name="rating" value="2" /><label for "star4"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+        <input type="radio" id="star2" name="rating" value="4" /><label for="star2"></label>
+        <input type="radio" id="star1" name="rating" value="5" /><label for="star1"></label>
+    </div>
+    <p style="padding-left: 20%;">Feedback:</p>
+    <form id="feedbackForm" style="padding-left: 30%;">
+        <label for="feedback"></label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+    </div>
+    <div class="cart-container">
+    <div id="feedbackList" style="padding-left: 20%;padding-top: 2%;"></div>
+    </div>
+    <div class="footer">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    </div>
+
+
+    <script>
+        async function fetchUserData() {
+            try {
+                const response = await fetch('http://localhost:3000/retrieve-current-user-data');
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    // Display user data
+                    document.getElementById('email').textContent = data.email;
+                } else {
+                    console.error('Failed to fetch user data:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        async function submitFeedback() {
+            const feedback = document.getElementById('feedback').value;
+            const ratingInputs = document.querySelectorAll('.rating input[name="rating"]');
+            let selectedRating = 0;
+
+            ratingInputs.forEach(input => {
+                if (input.checked) {
+                    selectedRating = input.value;
+                }
+            });
+
+            try {
+                const response = await fetch('http://localhost:3000/submit-feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ feedback, rating: selectedRating }), // Include the rating value
+                });
+
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    alert('Feedback submitted successfully');
+                    // Clear the text area and reset the rating after submission
+                    document.getElementById('feedback').value = '';
+                    ratingInputs.forEach(input => {
+                        input.checked = false;
+                    });
+                    // Fetch and display updated feedback
+                    fetchAndDisplayFeedback();
+                } else {
+                    alert('Failed to submit feedback');
+                }
+            } catch (error) {
+                console.error('Error submitting feedback:', error);
+            }
+        }
+
+        async function fetchAndDisplayFeedback() {
+            try {
+                const response = await fetch('http://localhost:3000/fetch-feedback-data');
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    const feedbackList = document.getElementById('feedbackList');
+                    feedbackList.innerHTML = ''; // Clear the previous data
+
+                    data.forEach(item => {
+                        const feedbackItem = document.createElement('div');
+                        feedbackItem.innerHTML = `
+                            <strong>Email:</strong> ${item.email}<br>
+                            <strong>Rating:</strong> ${item.rating} star(s)<br>
+                            <strong>Feedback:</strong> ${item.feedback}<br><br>`;
+                        feedbackList.appendChild(feedbackItem);
+                    });
+                } else {
+                    console.error('Failed to fetch feedback data:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching feedback data:', error);
+            }
+        }
+
+        function toggleNav() {
+            let sidenav = document.getElementById("mySidenav");
+            if (sidenav.style.width === "15%") {
+                sidenav.style.width = "0";
+                document.body.style.marginLeft = "0";
+            } else {
+                sidenav.style.width = "15%";
+                document.body.style.marginLeft = "15%";
+            }
+        }
+
+        // Fetch user data and feedback data on page load
+        fetchUserData();
+        fetchAndDisplayFeedback();
+
+        // Add an event listener to the feedback form for submission
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            submitFeedback();
+        });
+    </script>
+</body>
+</html>

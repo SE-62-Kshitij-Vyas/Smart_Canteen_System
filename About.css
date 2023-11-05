@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #181717;
+    color: #ffffff;
+}
+
+/* Branding and Header */
+#header .branding {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+#header h1 {
+    margin-left: 1rem;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+}
+
+.nav__logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav__list {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.nav__link:hover,
+.nav__link.active {
+    background-color: #555555;
+}
+
+.nav__shop {
+    margin-left: 1rem;
+}
+
+/* About Content */
+.about-content {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer */
+.footer {
+    padding: 1rem 2rem;
+    background-color: #333;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 1rem;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: #bbbbbb;
+}

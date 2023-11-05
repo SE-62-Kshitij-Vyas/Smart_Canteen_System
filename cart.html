@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <section id="header" style="background-color: #2e8b57;">
+        <span id="menuToggle" style="font-size:30px;cursor:pointer;padding: 20px;background-color: #2e8b57" onclick="toggleNav()">&#9776;</span>
+        <div class="branding">
+
+    <!-- Trigger to open the sidebar -->
+    
+
+            <div id="mySidenav" class="sidenav">
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="accounts.html">User Information</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="About.html">About</a>
+                <a href="Login.html">Sign Out</a>
+            </div>
+            <img id="canteen-logo" src="canteenlogo.png" alt="logo">
+            <h1>Smart Canteen System</h1>
+        </div>
+    </section>
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th> 
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be populated here by cart.js -->
+            </tbody>
+        </table>
+    
+        <div class="cart-summary">
+            <span>Total: </span><span id="total-price">Rs.0.00</span>
+        </div>
+        <button id="proceed-to-checkout">Proceed to Checkout</button>
+        <button id="clear-cart-btn">Clear Cart</button>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="About.html">Contact Us</a>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html>

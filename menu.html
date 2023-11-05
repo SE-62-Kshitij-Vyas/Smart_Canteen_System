@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Canteen System</title>
+    <style>
+/* Base styles and colors */
+body, html, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.Menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 columns */
+    gap: 20px;  
+    padding: 20px;
+}
+
+        body {
+            font-family: "Lato", sans-serif;
+            transition: margin-left 0.5s;
+            background-color: #f7fff7; /* light green */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+         h2, h5 {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+       color: #D9D9D9;
+      transition: 0.3s ease;
+      font-size: 2.5em;
+}
+
+h1:hover {
+    color: white;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #2e8b57;;
+}
+#canteen-logo {
+    width: 100px;
+    height: 100px;  
+    margin-right: 20px;
+}
+
+        /* Sidebar Styles */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #2e8b57; /* green */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 20px;
+        }
+
+        .sidenav a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            background-color: #ffffff;
+            color: #2e8b57; /* green */
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            color: #ffffff;
+        }
+
+        /* Food items in grid */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 20px;
+            margin-right: 10%;
+        }
+
+        .food-items {
+            width: 66%; 
+    height: auto;  /* Adjust this if you want a fixed height, but 'auto' will let it adjust based on content size */
+    overflow: hidden;
+    box-sizing: border-box;  /* This ensures padding and border are included in the element's total width and height */
+}
+
+/* Remove any default margin or padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+.details-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+        .food-items:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .food-items img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Testimonials section */
+        .testimonials {
+            background-color: #2e8b57; 
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #2e8b57; /* green */
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="header" style="background-color: #2e8b57;">
+        <span id="menuToggle" style="font-size:30px;cursor:pointer;padding: 20px;background-color: #2e8b57" onclick="toggleNav()">&#9776;</span>
+        <div class="branding">
+
+    <!-- Trigger to open the sidebar -->
+    
+
+            <div id="mySidenav" class="sidenav">
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="accounts.html">User Information</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="About.html">About</a>
+                <a href="Login.html">Sign Out</a>
+            </div>
+            <img id="canteen-logo" src="canteenlogo.png" alt="logo">
+            <h1>Smart Canteen System</h1>
+        </div>
+    </section>
+
+
+<!-- Food Items Grid -->
+<div class="Menu">
+  <!-- First Item -->
+  <div class="food-items" data-product-name="Pav Bhaji" data-product-price="80">
+      <img src="assets/pav-bhaji.jpg">
+      <div class="details">
+          <div class="details-sub">
+              <h5>Pav Bhaji</h5>
+              <h5 class="price">Rs.80</h5>
+          </div>
+          <button class="add-to-cart-btn" data-product-name="Pav Bhaji" data-product-price="80">Add to cart</button>
+      </div>
+  </div>
+  <div class="food-items" data-product-name="Missal Pav" data-product-price="50">
+    <img src="Assets/misal-pav-banavani-rit.jpg">
+    <div class="details">
+        <div class="details-sub">
+            <h5>Missal Pav</h5>
+            <h5 class="price">Rs.50</h5>
+        </div>
+        <button class="add-to-cart-btn" data-product-name="Missal Pav" data-product-price="50">Add to cart</button>
+    </div>
+</div>
+
+<!-- ... (Following the same format for each item) ... -->
+
+<!-- Veg Hakka Noodles -->
+<div class="food-items" data-product-name="Veg Hakka Noodles" data-product-price="120">
+    <img src="Assets/Vegetable-Hakka-Noodles-Restaurant-Style.jpg">
+    <div class="details">
+        <div class="details-sub">
+            <h5>Veg Hakka Noodles</h5>
+            <h5 class="price">Rs.120</h5>
+        </div>
+        <button class="add-to-cart-btn" data-product-name="Veg Hakka Noodles" data-product-price="120">Add to cart</button>
+    </div>
+</div>
+
+<!-- Rava Masala Dosa -->
+<div class="food-items" data-product-name="Rava Masala Dosa" data-product-price="90">
+    <img src="Assets/RavaMasalaDosa.jpg">
+    <div class="details">
+        <div class="details-sub">
+            <h5>Rava Masala Dosa</h5>
+            <h5 class="price">Rs.90</h5>
+        </div>
+        <button class="add-to-cart-btn" data-product-name="Rava Masala Dosa" data-product-price="90">Add to cart</button>
+    </div>
+</div>
+
+<div class="food-items" data-product-name="Chicken Fried Rice" data-product-price="150">
+  <img src="Assets/Chickenfriedrice.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Chicken Fried Rice</h5>
+          <h5 class="price">Rs.150</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Chicken Fried Rice" data-product-price="150">Add to cart</button>
+  </div>
+</div>
+
+<!-- Egg Omelette -->
+<div class="food-items" data-product-name="Egg Omelette" data-product-price="30">
+  <img src="Assets/Omellete.jpeg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Egg Omelette</h5>
+          <h5 class="price">Rs.30</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Egg Omelette" data-product-price="30">Add to cart</button>
+  </div>
+</div>
+
+<!-- Masala Maggi -->
+<div class="food-items" data-product-name="Masala Maggi" data-product-price="35">
+  <img src="Assets/Maggi.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Masala Maggi</h5>
+          <h5 class="price">Rs.35</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Masala Maggi" data-product-price="35">Add to cart</button>
+  </div>
+</div>
+
+<!-- Veg Puff -->
+<div class="food-items" data-product-name="Veg Puff" data-product-price="25">
+  <img src="Assets/veg puff.jpeg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Veg Puff</h5>
+          <h5 class="price">Rs.25</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Veg Puff" data-product-price="25">Add to cart</button>
+  </div>
+</div>
+
+<!-- Cheese Grilled Sandwich -->
+<div class="food-items" data-product-name="Cheese Grilled Sandwich" data-product-price="65">
+  <img src="Assets/Sandwich.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Cheese Grilled Sandwich</h5>
+          <h5 class="price">Rs.65</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Cheese Grilled Sandwich" data-product-price="65">Add to cart</button>
+  </div>
+</div>
+
+<div class="food-items" data-product-name="Onion Uttapam" data-product-price="80">
+  <img src="Assets/uttapam.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Onion Uttapam</h5>
+          <h5 class="price">Rs.80</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Onion Uttapam" data-product-price="80">Add to cart</button>
+  </div>
+</div>
+
+<!-- Chicken Lollipop -->
+<div class="food-items" data-product-name="Chicken Lollipop" data-product-price="110">
+  <img src="Assets/62a95eaacb8d206406f1d296_Chicken Lollipop Hero 4.3.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Chicken Lollipop</h5>
+          <h5 class="price">Rs.110</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Chicken Lollipop" data-product-price="110">Add to cart</button>
+  </div>
+</div>
+
+<!-- Veg Frankie -->
+<div class="food-items" data-product-name="Veg Frankie" data-product-price="40">
+  <img src="Assets/frankie.jpg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Veg Frankie</h5>
+          <h5 class="price">Rs.40</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Veg Frankie" data-product-price="40">Add to cart</button>
+  </div>
+</div>
+
+<!-- Nimbu Paani -->
+<div class="food-items" data-product-name="Nimbu Paani" data-product-price="20">
+  <img src="Assets/Nimbupaani.jpeg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Nimbu Paani</h5>
+          <h5 class="price">Rs.20</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Nimbu Paani" data-product-price="20">Add to cart</button>
+  </div>
+</div>
+
+<!-- Coffee -->
+<div class="food-items" data-product-name="Coffee" data-product-price="15">
+  <img src="Assets/coffee.jpeg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Coffee</h5>
+          <h5 class="price">Rs.15</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Coffee" data-product-price="15">Add to cart</button>
+  </div>
+</div>
+
+<!-- Tea -->
+<div class="food-items" data-product-name="Tea" data-product-price="10">
+  <img src="Assets/tea.jpeg">
+  <div class="details">
+      <div class="details-sub">
+          <h5>Tea</h5>
+          <h5 class="price">Rs.10</h5>
+      </div>
+      <button class="add-to-cart-btn" data-product-name="Tea" data-product-price="10">Add to cart</button>
+  </div>
+</div>
+
+<!-- Oreo Milkshake -->
+<div class="food-items" data-product-name="Oreo Milkshake" data-product-price="50">
+    <img src="Assets/Oreoshake.jpg">
+    <div class="details">
+        <div class="details-sub">
+            <h5>Oreo Milkshake</h5>
+            <h5 class="price">Rs.50</h5>
+        </div>
+        <button class="add-to-cart-btn" data-product-name="Oreo Milkshake" data-product-price="50">Add to cart</button>
+    </div>
+</div>
+</div>
+
+
+
+<!-- Footer -->
+<div class="footer">
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    <!-- ... social media links and other company info ... -->
+</div>
+
+<!-- JavaScript for opening and closing the sidenav -->
+<script src="menu.js"></script>
+
+</body>
+</html>

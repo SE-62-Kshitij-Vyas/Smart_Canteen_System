@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="accounts.css"> <!-- Link to your CSS file -->
+    <title>Account Page</title>
+</head>
+<body>
+    <section id="header" style="background-color: #2e8b57;">
+        <span id="menuToggle" style="font-size:30px;cursor:pointer;padding: 20px;background-color: #2e8b57" onclick="toggleNav()">&#9776;</span>
+        <div class="branding">
+
+    <!-- Trigger to open the sidebar -->
+    
+
+            <div id="mySidenav" class="sidenav">
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="accounts.html">User Information</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="About.html">About</a>
+                <a href="Login.html">Sign Out</a>
+            </div>
+            <img id="canteen-logo" src="canteenlogo.png" alt="logo">
+            <h1>Smart Canteen System</h1>
+        </div>
+    </section>
+    <div class="cart-container"  style="padding-left: 20%;">
+    <h2 >Account Information</h2>
+
+    <div id="account-info">
+        <table>
+            <tr><td>
+                <strong>Email:</strong><span id="email"></span>
+            </td></tr>
+            <tr><td>
+                <strong>Phone Number:</strong><span id="phone"></span>
+            </td></tr>
+            <tr><td>
+                <h2>Past Orders</h2>
+                <ul id="past-orders">
+                    <!-- Past orders will be displayed here -->
+                </ul>
+            </td></tr>
+            
+        </table>
+    </div>
+    </div>
+    <div class="footer">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+    </div>
+
+
+    <script>
+        // Function to fetch and display user data
+        async function fetchUserData() {
+            try {
+                const response = await fetch('http://localhost:3000/retrieve-current-user-data');
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    // Display user data
+                    document.getElementById('email').textContent = data.email;
+                    document.getElementById('phone').textContent = data.phone;
+
+                    const pastOrders = data.pastOrders;
+                    const pastOrdersList = document.getElementById('past-orders');
+
+                    if (pastOrders.length === 0) {
+                        pastOrdersList.innerHTML = '<li>No past orders available</li>';
+                    } else {
+                        pastOrdersList.innerHTML = pastOrders.map((order, index) => {
+                            return `<li>Order ${index + 1}:</li>
+                                    <ul>
+                                        ${order.map(item => {
+                                            return `<li>${item.name} - ${item.price} - Quantity: ${item.quantity}</li>`;
+                                        }).join('')}
+                                    </ul>`;
+                        }).join('');
+                    }
+                } else {
+                    console.error('Failed to fetch user data:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        function toggleNav() {
+            let sidenav = document.getElementById("mySidenav");
+            if (sidenav.style.width === "15%") {
+                sidenav.style.width = "0";
+                document.body.style.marginLeft = "0";
+            } else {
+                sidenav.style.width = "15%";
+                document.body.style.marginLeft = "15%";
+            }
+        }
+
+        // Call the function to fetch and display user data
+        fetchUserData();
+    </script>
+</body>
+</html>
